@@ -29,8 +29,10 @@ enum class TokenType {
 };
 
 class Token {
-public:
+ public:
   TokenType type;
   std::string literal;
-  Token(TokenType type, std::string literal) : type(type), literal(literal){};
+  Token();
+  Token(TokenType type, std::string literal);
+  TokenType LookupIdent(std::string ident);
 };
