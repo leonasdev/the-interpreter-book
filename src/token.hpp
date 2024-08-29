@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ostream>
 #include <string>
 
 enum class TokenType {
@@ -43,6 +44,8 @@ enum class TokenType {
   Return,
 };
 
+std::ostream& operator<<(std::ostream& out, const TokenType& tokenType);
+
 class Token {
  public:
   TokenType type;
@@ -50,4 +53,5 @@ class Token {
   Token();
   Token(TokenType type, std::string literal);
   TokenType LookupIdent(std::string ident);
+  friend std::ostream& operator<<(std::ostream& out, const Token& token);
 };

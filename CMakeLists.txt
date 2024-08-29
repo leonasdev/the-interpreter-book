@@ -13,7 +13,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
-add_executable(main src/main.cpp)
+add_executable(main src/main.cpp src/lexer.cpp src/token.cpp)
 
 add_executable(tests tests/lexer_test.cpp src/lexer.cpp src/token.cpp)
 
