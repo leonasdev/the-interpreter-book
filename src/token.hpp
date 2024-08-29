@@ -13,6 +13,16 @@ enum class TokenType {
   // Operators
   Assign,
   Plus,
+  Minus,
+  Bang,
+  Asterisk,
+  Slash,
+
+  LT,
+  GT,
+
+  Eq,
+  NotEq,
 
   // Delimiters
   Comma,
@@ -26,6 +36,11 @@ enum class TokenType {
   // Keywords
   Function,
   Let,
+  True,
+  False,
+  If,
+  Else,
+  Return,
 };
 
 class Token {

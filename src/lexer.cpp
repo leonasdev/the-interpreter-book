@@ -19,7 +19,16 @@ Token Lexer::nextToken() {
   this->skipWhiteSpace();
   switch (this->ch) {
     case '=':
-      tok = {TokenType::Assign, std::string{this->ch}};
+      if (this->peekChar() == '=') {
+        char ch = this->ch;
+        this->readChar();
+        std::string literals;
+        literals += ch;
+        literals += this->ch;
+        tok = {TokenType::Eq, literals};
+      } else {
+        tok = {TokenType::Assign, std::string{this->ch}};
+      }
       break;
     case ';':
       tok = {TokenType::Semicolon, std::string{this->ch}};
@@ -35,6 +44,33 @@ Token Lexer::nextToken() {
       break;
     case '+':
       tok = {TokenType::Plus, std::string{this->ch}};
+      break;
+    case '-':
+      tok = {TokenType::Minus, std::string{this->ch}};
+      break;
+    case '!':
+      if (this->peekChar() == '=') {
+        char ch = this->ch;
+        this->readChar();
+        std::string literals;
+        literals += ch;
+        literals += this->ch;
+        tok = {TokenType::NotEq, literals};
+      } else {
+        tok = {TokenType::Bang, std::string{this->ch}};
+      }
+      break;
+    case '/':
+      tok = {TokenType::Slash, std::string{this->ch}};
+      break;
+    case '*':
+      tok = {TokenType::Asterisk, std::string{this->ch}};
+      break;
+    case '<':
+      tok = {TokenType::LT, std::string{this->ch}};
+      break;
+    case '>':
+      tok = {TokenType::GT, std::string{this->ch}};
       break;
     case '{':
       tok = {TokenType::LBrace, std::string{this->ch}};
@@ -73,6 +109,14 @@ void Lexer::readChar() {
   }
   this->position = this->readPosition;
   this->readPosition += 1;
+}
+
+char Lexer::peekChar() {
+  if (this->readPosition >= this->input.size()) {
+    return 0;
+  } else {
+    return this->input[this->readPosition];
+  }
 }
 
 std::string Lexer::readIdentifier() {

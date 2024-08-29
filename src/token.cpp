@@ -5,6 +5,11 @@
 std::unordered_map<std::string, TokenType> keywords = {
     {"fn", TokenType::Function},
     {"let", TokenType::Let},
+    {"true", TokenType::True},
+    {"false", TokenType::False},
+    {"if", TokenType::If},
+    {"else", TokenType::Else},
+    {"return", TokenType::Return},
 };
 
 Token::Token(TokenType type, std::string literal)
