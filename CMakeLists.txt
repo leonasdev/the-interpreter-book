@@ -13,9 +13,9 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
-add_executable(main src/main.cpp src/lexer.cpp src/token.cpp)
+add_executable(main src/main.cpp src/lexer.cpp src/token.cpp src/ast.cpp src/parser.cpp)
 
-add_executable(tests tests/lexer_test.cpp src/lexer.cpp src/token.cpp)
+add_executable(tests tests/lexer_test.cpp tests/parser_test.cpp src/lexer.cpp src/token.cpp src/ast.cpp src/parser.cpp)
 
 target_compile_features(main PRIVATE cxx_std_20)
 

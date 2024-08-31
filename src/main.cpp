@@ -4,10 +4,12 @@
 #include <iostream>
 #include <string>
 
+#include "ast.hpp"
 #include "lexer.hpp"
 #include "token.hpp"
 
 int main() {
+  LetStatement l;
   std::cout << "Hello " << getenv("USER")
             << "! This is Monkey programming langueage!" << std::endl;
   std::cout << "Feel free to type in commands\n" << std::endl;
