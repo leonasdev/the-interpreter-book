@@ -32,6 +32,7 @@ class Program : INode {
 
 class Identifier : public IExpression {
  public:
+  Identifier(Token token, std::string value);
   std::string tokenLiteral() override;
 
   Token token;
@@ -40,7 +41,10 @@ class Identifier : public IExpression {
 
 class LetStatement : public IStatement {
  public:
-  ~LetStatement() { delete name; };
+  ~LetStatement() {
+    delete name;
+    delete value;
+  };
   std::string tokenLiteral() override;
 
   Token token;

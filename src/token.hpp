@@ -48,10 +48,11 @@ std::ostream& operator<<(std::ostream& out, const TokenType& tokenType);
 
 class Token {
  public:
-  TokenType type;
-  std::string literal;
   Token();
+  friend std::ostream& operator<<(std::ostream& out, const Token& token);
   Token(TokenType type, std::string literal);
   TokenType LookupIdent(std::string ident);
-  friend std::ostream& operator<<(std::ostream& out, const Token& token);
+
+  TokenType type;
+  std::string literal;
 };
